@@ -2,7 +2,7 @@
 
 #include "ofMain.h"
 #include "config.h"
-#include "audioTool.hpp"
+#include "util/audioTool.hpp"
 #include "types/WaveType.hpp"
 #include "types/SynthWrapper.hpp"
 

@@ -8,6 +8,13 @@
 #pragma once
 #include "ofMain.h"
 
+// --- CONTROLS ---
+#define SHOOT_KEY 32
+#define SINE_KEY 121
+#define SQUARE_KEY 117
+#define TRIANGLE_KEY 105
+#define SAWTOOTH_KEY 108
+
 // --- AUDIO ---
 #define TABLE_SIZE 1024
 #define NUM_TABLES 10

@@ -139,3 +139,20 @@ void SynthWrapper::changeTable(WaveType waveType) {
         }
     }
 }
+
+void SynthWrapper::handleKeyReleased(int key) {
+    switch(key) {
+        case SINE_KEY:
+            changeTable(WaveType::sine);
+            break;
+        case SQUARE_KEY:
+            changeTable(WaveType::square);
+            break;
+        case TRIANGLE_KEY:
+            changeTable(WaveType::triangle);
+            break;
+        case SAWTOOTH_KEY:
+            changeTable(WaveType::sawtooth);
+            break;
+    }
+}

@@ -15,41 +15,37 @@ void ofApp::setup(){
     settings.numOutputChannels = 2;
     settings.numInputChannels = 0;
     settings.bufferSize = BUFFER_SIZE;
-    soundStream.setup(settings);}
+    soundStream.setup(settings);
+
+    game = new OHSG();
+}
 
 //--------------------------------------------------------------
 void ofApp::update(){
-
+    game->update();
 }
 
 //--------------------------------------------------------------
 void ofApp::draw(){
-
+    game->draw();
 }
 
 //--------------------------------------------------------------
 void ofApp::keyPressed(int key){
+    if (key == SHOOT_KEY && game->get_state() == loop) {
+        isPlaying = true;
+    }
 }
 
 //--------------------------------------------------------------
 void ofApp::keyReleased(int key){
-    switch(key) {
-        case 32:
-            isPlaying = !isPlaying;
-            break;
-        case 121:
-            synth.changeTable(WaveType::sine);
-            break;
-        case 117:
-            synth.changeTable(WaveType::square);
-            break;
-        case 105:
-            synth.changeTable(WaveType::triangle);
-            break;
-        case 108:
-            synth.changeTable(WaveType::sawtooth);
-            break;
+    game->handle_key_released(key);
+    synth.handleKeyReleased(key);
+    
+    if (key == SHOOT_KEY && game->get_state() == loop) {
+        isPlaying = false;
     }
+    
 }
 
 //--------------------------------------------------------------

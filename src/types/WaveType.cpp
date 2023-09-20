@@ -44,13 +44,13 @@ ofColor choose_color_by_wave(const WaveType& wave) {
 
 WaveType choose_wave_by_key(int key) {
     switch (key) {
-        case 121: // y
+        case SINE_KEY: // y
             return WaveType::sine;
-        case 117: // u
+        case SQUARE_KEY: // u
             return WaveType::square;
-        case 105: // i
+        case TRIANGLE_KEY: // i
             return WaveType::triangle;
-        case 108: // l
+        case SAWTOOTH_KEY: // l
             return WaveType::sawtooth;
         default:
             return WaveType::sine;

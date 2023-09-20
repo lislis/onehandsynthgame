@@ -13,7 +13,7 @@
 using namespace std;
 
 OHSG::OHSG() {
-    state = GameState::loop;
+    state = GameState::intro;
     wave = WaveType::sine;
     ship = new Ship(wave);
     em = new EnemyManager();
@@ -127,13 +127,13 @@ void OHSG::handle_key_released(int key) {
     //cout << key << endl;
     
     if (state == GameState::intro) {
-        if (key == 32) set_state(GameState::loop);
+        if (key == SHOOT_KEY) set_state(GameState::loop);
     }
     if (state == GameState::over) {
-        if (key == 32) set_state(GameState::intro);
+        if (key == SHOOT_KEY) set_state(GameState::intro);
     }
     if (state == GameState::loop) {
-        if (key == 32) {
+        if (key == SHOOT_KEY) {
             ship->shoot();
         } else {
             wave = choose_wave_by_key(key);

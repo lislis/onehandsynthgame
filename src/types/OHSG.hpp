@@ -24,7 +24,6 @@ class OHSG {
         void reset_score();
         int get_score();
         
-    
         void update();
         void draw();
         void collision_check();

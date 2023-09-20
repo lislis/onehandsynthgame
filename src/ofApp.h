@@ -5,6 +5,7 @@
 #include "util/audioTool.hpp"
 #include "types/WaveType.hpp"
 #include "types/SynthWrapper.hpp"
+#include "types/OHSG.hpp"
 
 class ofApp : public ofBaseApp{
 	public:
@@ -20,4 +21,6 @@ class ofApp : public ofBaseApp{
         ofSoundStream soundStream;
         bool isPlaying;
         SynthWrapper synth;
+    private:
+        OHSG* game;
 };

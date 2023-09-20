@@ -93,18 +93,23 @@ void OHSG::draw_level() {
 
 void OHSG::draw_ui() {
     ofSetColor(FONT_COLOR);
-    float space_top = 38;
+    float space_top = 40;
     ofDrawBitmapString("Score: " + to_string(score), 30, space_top);
     ofDrawBitmapString("Wave: ", 110, space_top);
     
     for (int i = sine; i <= sawtooth; i++) {
+        
+        ofSetColor(FONT_COLOR);
+        ofVec2f pos = ofVec2f(167 + (i * 40), space_top - 10);
+        draw_wave(i, pos);
+        
         if (wave == i) {
             ofPushStyle();
             ofSetColor(choose_color_by_wave(wave));
-            ofDrawCircle(170 + (i * 30), 32, 14);
+            ofDrawRectangle(pos.x -4, pos.y -4, WAVE_WIDTH + 8, WAVE_HEIGHT + 8);
             ofPopStyle();
         }
-        ofDrawBitmapString(i, 167 + (i * 30), space_top);
+       
     }
     
 }

@@ -6,26 +6,7 @@
 //
 
 #include "WaveType.hpp"
-#include "config.h"
 
-
-//void Wave::update() {
-//    form.clear();
-//    
-//    for (int i = 0; i < TABLE_SIZE; i++) {
-//        float x = ofMap(i, 0, TABLE_SIZE, 0, WAVE_WIDTH);
-//        float y = ofMap(waveTable[int(currentOctave)][i], -1, 1, WAVE_HEIGHT, 0);
-//        form.addVertex(x, y);
-//    }
-//}
-
-void Wave::draw(float _x, float _y) {
-    ofPushMatrix();
-    ofTranslate(_x, _y);
-    form.draw();
-    //ofDrawBitmapString(ofToString(type), _x, _y);
-    ofPopMatrix();
-}
 
 ofColor choose_color_by_wave(const WaveType& wave) {
     switch (wave) {
@@ -89,6 +70,118 @@ WaveType assign_wave(int variant_index) {
 void draw_wave(const WaveType& wave, ofVec2f pos) {
     ofNoFill();
     ofSetLineWidth(1);
-    ofDrawRectangle(pos.x, pos.y, WAVE_WIDTH, WAVE_HEIGHT);
-    ofDrawBitmapString(wave, pos.x + 10, pos.y + 14);
+    ofPushMatrix();
+    ofTranslate(pos.x, pos.y);
+    
+    switch (wave) {
+        case WaveType::sine:
+            draw_sine();
+            break;
+        case WaveType::square:
+            draw_square();
+            break;
+        case WaveType::triangle:
+            draw_triangle();
+            break;
+        case WaveType::sawtooth:
+            draw_sawtooth();
+            break;
+    }
+    
+    ofPopMatrix();
+    //ofDrawBitmapString(wave, pos.x + 10, pos.y + 14);
+}
+
+void draw_wave(const int variant_index, ofVec2f pos) {
+    ofNoFill();
+    ofSetLineWidth(1);
+    ofPushMatrix();
+    ofTranslate(pos.x, pos.y);
+    
+    switch (variant_index) {
+        case WaveType::sine:
+            draw_sine();
+            break;
+        case WaveType::square:
+            draw_square();
+            break;
+        case WaveType::triangle:
+            draw_triangle();
+            break;
+        case WaveType::sawtooth:
+            draw_sawtooth();
+            break;
+    }
+    
+    ofPopMatrix();
+    //ofDrawBitmapString(wave, pos.x + 10, pos.y + 14);
+}
+
+void draw_sine() {
+    int numPoints = 200;
+    ofPolyline form;
+    for (int i = 0; i < numPoints; i++) {
+        float x = ofMap(i, 0, numPoints, 0, WAVE_WIDTH);
+        //float theta = i*TWO_PI/numPoints;
+        float theta = i*TWO_PI*2/numPoints;
+        float temp_y = sin(theta);
+        float y = ofMap(temp_y, -1, 1, WAVE_HEIGHT, 0);
+        form.addVertex(x, y);
+    }
+    form.draw();
+}
+void draw_square() {
+    int numPoints = 200;
+    ofPolyline form;
+    for (int i = 0; i < numPoints; i++) {
+        float x = ofMap(i, 0, numPoints, 0, WAVE_WIDTH);
+        float theta = i*TWO_PI/numPoints;
+        float temp_y = sqw(theta);
+        float y = ofMap(temp_y, -1, 1, WAVE_HEIGHT, 0);
+        form.addVertex(x, y);
+    }
+    form.draw();
+}
+
+void draw_triangle() {
+    int numPoints = 200;
+    ofPolyline form;
+    for (int i = 0; i < numPoints; i++) {
+        float x = ofMap(i, 0, numPoints, 0, WAVE_WIDTH);
+        float theta = i*PI/numPoints;
+        float temp_y = tw(theta);
+        float y = ofMap(temp_y, -1, 1, WAVE_HEIGHT, 0);
+        form.addVertex(x, y);
+    }
+    form.draw();
+}
+
+void draw_sawtooth() {
+    int numPoints = 200;
+    ofPolyline form;
+    for (int i = 0; i < numPoints; i++) {
+        float x = ofMap(i, 0, numPoints, 0, WAVE_WIDTH);
+        float theta = i*TWO_PI/numPoints;
+        float temp_y = stw(theta);
+        float y = ofMap(temp_y, -1, 1, WAVE_HEIGHT, 0);
+        form.addVertex(x, y);
+    }
+    form.draw();
+}
+
+float sqw(float a) {
+    a /= PI;
+    a -= int(a);
+    return a < .5? -1 : 1;
+}
+
+float stw(float a) {
+    a /= 2;
+    a -= int(a);
+    return ofMap(a,0,1,-1,1);
+}
+
+float tw(float a) {
+    a = 1-4 * fabs(0.5 - ((0.5*a+ 0.25) - int(0.5*a+ 0.25)));
+    return a;
 }

@@ -21,6 +21,7 @@ class ofApp : public ofBaseApp{
         ofSoundStream soundStream;
         bool isPlaying;
         SynthWrapper synth;
+        
     private:
         OHSG* game;
 };

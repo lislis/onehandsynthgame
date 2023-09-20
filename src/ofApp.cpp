@@ -46,7 +46,6 @@ void ofApp::keyReleased(int key){
         isPlaying = false;
         synth.changeFreq();
     }
-    
 }
 
 //--------------------------------------------------------------

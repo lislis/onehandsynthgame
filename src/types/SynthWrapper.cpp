@@ -11,7 +11,7 @@
 void SynthWrapper::setup() {
     currentType = WaveType::sine;
     
-    frequency = 440;
+    frequency = 436.7;
     phase = 0;
 
     tableFundamentalFreq = SAMPLE_RATE /float(TABLE_SIZE);
@@ -155,4 +155,14 @@ void SynthWrapper::handleKeyReleased(int key) {
             changeTable(WaveType::sawtooth);
             break;
     }
+}
+
+void SynthWrapper::changeFreq() {
+    // we only playing the c major scale
+    // frequencies copied from the internet(tm)
+    array<float, 8> frequencies = {262.0, 294.8, 327.5,
+                                    349.3, 393.0, 436.7,
+                                    491.2, 524.0 };
+    frequency = frequencies[int(ofRandom(0, 7))];
+    phaseInc = frequency / tableFundamentalFreq;
 }

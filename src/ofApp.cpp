@@ -44,6 +44,7 @@ void ofApp::keyReleased(int key){
     
     if (key == SHOOT_KEY && game->get_state() == loop) {
         isPlaying = false;
+        synth.changeFreq();
     }
     
 }

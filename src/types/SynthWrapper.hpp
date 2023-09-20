@@ -30,4 +30,5 @@ public:
     void changeTable(WaveType waveType);
     float getCurrentSample();
     void handleKeyReleased(int key);
+    void changeFreq();
 };

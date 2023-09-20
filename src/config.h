@@ -31,6 +31,8 @@
 #define BACKGROUND_COLOR ofColor(30, 33, 32)
 #define SHIP_COLOR ofColor(190, 40, 60)
 
+#define SHIP_X 100.0
+
 // --- WAVES ---
 #define SINE_COLOR ofColor(200, 0, 100);
 #define SQUARE_COLOR ofColor(0, 100, 200);
@@ -43,3 +45,4 @@
 // --- ENEMIES ---
 #define ENEMY_WAVE_INTERVAL 4000.0
 #define ENEMY_INACTIVE_COLOR ofColor(100.0, 100.0, 100.0)
+#define NUM_ENEMIES_PER_WAVE 5

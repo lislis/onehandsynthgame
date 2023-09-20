@@ -50,7 +50,7 @@ void EnemyManager::draw(const WaveType& wave) {
 }
 
 void EnemyManager::spawn_wave() {
-    int new_enemies_wave_count = (int)ofRandom(6, 20);
+    int new_enemies_wave_count = NUM_ENEMIES_PER_WAVE;
     for (int i = 0; i < new_enemies_wave_count; i++) {
         float rand_y = ofRandom(UPPER_BOUND, LOWER_BOUND - WAVE_HEIGHT);
         ofVec2f new_pos = ofVec2f(ofGetWidth(), rand_y);

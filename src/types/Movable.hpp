@@ -8,6 +8,7 @@
 #pragma once
 
 #include "ofMain.h"
+#include "config.h"
 
 class Movable {
 public:

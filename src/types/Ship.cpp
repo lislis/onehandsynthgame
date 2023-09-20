@@ -14,8 +14,8 @@ Ship::Ship(const WaveType& wave) {
     direction = -1.;
     size = 30.;
     speed = 100.;
-    position = ofVec2f(100., ofGetHeight()/2);
-    pm = new ProjectileManager(wave, position);
+    position = ofVec2f(SHIP_X, ofGetHeight()/2);
+    pm = new ProjectileManager(wave, position - ofVec2f(-5, WAVE_HEIGHT/2));
 };
 
 Ship::~Ship() {
@@ -24,7 +24,7 @@ Ship::~Ship() {
 
 void Ship::update(const WaveType& wave) {
     position.y += (direction * ofGetLastFrameTime() * speed);
-    pm->update(wave, position);
+    pm->update(wave, position - ofVec2f(-5, WAVE_HEIGHT/2));
     
     if (position.y <= UPPER_BOUND + size) {
         direction = 1.;

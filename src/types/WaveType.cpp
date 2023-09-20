@@ -118,7 +118,7 @@ void draw_wave(const int variant_index, ofVec2f pos) {
 }
 
 void draw_sine() {
-    int numPoints = 200;
+    int numPoints = int(WAVE_WIDTH);
     ofPolyline form;
     for (int i = 0; i < numPoints; i++) {
         float x = ofMap(i, 0, numPoints, 0, WAVE_WIDTH);
@@ -131,7 +131,7 @@ void draw_sine() {
     form.draw();
 }
 void draw_square() {
-    int numPoints = 200;
+    int numPoints = int(WAVE_WIDTH);
     ofPolyline form;
     for (int i = 0; i < numPoints; i++) {
         float x = ofMap(i, 0, numPoints, 0, WAVE_WIDTH);
@@ -144,7 +144,7 @@ void draw_square() {
 }
 
 void draw_triangle() {
-    int numPoints = 200;
+    int numPoints = int(WAVE_WIDTH);
     ofPolyline form;
     for (int i = 0; i < numPoints; i++) {
         float x = ofMap(i, 0, numPoints, 0, WAVE_WIDTH);
@@ -157,7 +157,7 @@ void draw_triangle() {
 }
 
 void draw_sawtooth() {
-    int numPoints = 200;
+    int numPoints = int(WAVE_WIDTH);
     ofPolyline form;
     for (int i = 0; i < numPoints; i++) {
         float x = ofMap(i, 0, numPoints, 0, WAVE_WIDTH);

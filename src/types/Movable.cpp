@@ -32,7 +32,7 @@ void Movable::update() {
 }
 
 bool Movable::is_out_of_bounds() {
-    if (pos.x > ofGetWidth() + 50.0 || pos.x < 0) {
+    if (pos.x > ofGetWidth() + WAVE_WIDTH || pos.x < SHIP_X - WAVE_WIDTH) {
         return true;
     } else {
         return false;

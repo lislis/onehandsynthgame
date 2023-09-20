@@ -15,6 +15,10 @@ ProjectileManager::ProjectileManager(const WaveType& wave, ofVec2f position) {
 
 ProjectileManager::~ProjectileManager() {
     delete next_shot;
+    for (int i = 0; i < projectiles.size(); i++) {
+        delete projectiles[i];
+        projectiles.erase(projectiles.begin() + i);
+    }
 }
 
 void ProjectileManager::update(const WaveType& wave, ofVec2f pos) {

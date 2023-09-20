@@ -8,6 +8,8 @@
 #pragma once
 #include "ofMain.h"
 
+#define MAX_GAME_TIME 60.0
+
 // --- CONTROLS ---
 #define SHOOT_KEY 32
 #define SINE_KEY 121
@@ -43,6 +45,6 @@
 #define WAVE_HEIGHT 20.
 
 // --- ENEMIES ---
-#define ENEMY_WAVE_INTERVAL 4000.0
+#define ENEMY_WAVE_INTERVAL 1.0
 #define ENEMY_INACTIVE_COLOR ofColor(100.0, 100.0, 100.0)
-#define NUM_ENEMIES_PER_WAVE 5
+#define NUM_ENEMIES_PER_WAVE 7

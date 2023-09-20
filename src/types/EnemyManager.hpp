@@ -21,5 +21,6 @@ public:
     
 private:
     std::vector<Enemy*> enemies{};
-    long int timer;
+    float timer;
+    float delta_time;
 };

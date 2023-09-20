@@ -9,20 +9,23 @@
 #include "config.h"
 
 EnemyManager::EnemyManager() {
-    timer = 3000.0;
+    timer = ofGetElapsedTimef();
+    delta_time = 0.0;
 }
 
 EnemyManager::~EnemyManager() {
-    
+    for (int i = 0; i < enemies.size(); i++) {
+        delete enemies[i];
+        enemies.erase(enemies.begin() + i);
+    }
 }
 
 void EnemyManager::update() {
-    timer += ofGetElapsedTimef();
-    
-    if (timer > ENEMY_WAVE_INTERVAL) {
+    delta_time = ofGetElapsedTimef();
+
+    if (delta_time - timer > ENEMY_WAVE_INTERVAL) {
         spawn_wave();
-        timer = 0.0;
-        cout << "spawn" << endl;
+        timer = delta_time;
     }
     
     for (std::vector<Enemy*>::iterator it = enemies.begin(); it != enemies.end(); it++) {
@@ -63,3 +66,4 @@ void EnemyManager::spawn_wave() {
 std::vector<Enemy*> EnemyManager::get_enemies() {
     return enemies;
 }
+

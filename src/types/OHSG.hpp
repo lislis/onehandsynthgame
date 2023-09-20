@@ -35,10 +35,14 @@ class OHSG {
         WaveType wave;
         EnemyManager* em;
     
+        float start_time;
+        float delta_time;
+    
         int score{0};
         void draw_background();
         void draw_entities();
         void draw_ui();
+        void draw_options(float _x, float _y);
         void draw_level();
         void draw_intro();
         void draw_tutorial();

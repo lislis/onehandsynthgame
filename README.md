@@ -4,9 +4,9 @@ OneHandSynthGame
 
 ## Running it
 
-This game is build with openFrameworks [v0.11.2](https://openframeworks.cc/download/older/) (no I have not tested with v0.12.0).
+This game is build with openFrameworks [v0.11.2](https://openframeworks.cc/download/older/) (no, I have not tested with v0.12.0).
 
-Clone or download the code and Use the Project Generator to get started.
+Clone or download the code and use the Project Generator to get started.
 
 ## More
 
